@@ -9,6 +9,8 @@ project rebuilds that signal for S&P 500 companies, tests whether it survives af
 the paper's sample period, checks whether standard risk factors explain it, and adds
 an embedding-based measure that separates rewording from new content.
 
+**Live dashboard:** https://lazy-prices.streamlit.app
+
 ## What I found
 
 Sample: 9,553 10-K filings from 495 current S&P 500 companies (filed 2005 to 2026),

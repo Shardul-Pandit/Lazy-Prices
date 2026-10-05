@@ -76,7 +76,7 @@ with tab_results:
         col.markdown(f"**{label(s)}**")
         col.metric("Long-short return, annualized", f"{p['ann_return']:.1%}", help="Least-changed quintile minus most-changed quintile")
         col.metric("t-statistic (Newey-West)", f"{p['t_stat']:.2f}")
-        col.metric("Six-factor alpha, bps per month", f"{a['alpha_monthly_bps']:.0f}", f"t = {a['alpha_t']:.2f}", delta_color="off")
+        col.metric("Six-factor alpha, bps per month", f"{a['alpha_monthly_bps']:.0f}", f"t = {a['alpha_t']:.2f}", delta_color="off", delta_arrow="off")
 
     st.subheader("Growth of $1 in the long-short portfolio")
     wide = ports.pivot(index="date", columns="signal", values=series)[chosen]
