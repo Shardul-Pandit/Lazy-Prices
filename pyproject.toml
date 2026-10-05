@@ -1,0 +1,49 @@
+[project]
+name = "lazyprices"
+version = "0.1.0"
+description = "Replicating and extending 'Lazy Prices': year-over-year 10-K text changes as a return signal"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "requests>=2.31",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "pyarrow>=15",
+    "lxml>=5",
+    "rapidfuzz>=3.6",
+    "statsmodels>=0.14",
+    "yfinance>=0.2.54",
+    "matplotlib>=3.8",
+    "typer>=0.12",
+    "tqdm>=4.66",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.50", "plotly>=5.22"]
+semantic = ["sentence-transformers>=3.0"]
+
+[project.scripts]
+lp = "lazyprices.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lazyprices"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

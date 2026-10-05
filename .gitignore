@@ -1,0 +1,15 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+.env
+
+# large, re-creatable data (raw filings, extracted text, embeddings, daily prices)
+data/raw/
+data/interim/
+
+# Yahoo-derived returns are re-creatable with `lp market` and are not redistributed
+data/processed/monthly_returns.parquet

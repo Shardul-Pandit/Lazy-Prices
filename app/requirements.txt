@@ -1,0 +1,7 @@
+# Used only by Streamlit Community Cloud to run streamlit_app.py (it reads the
+# dependency file next to the app first).
+# The research pipeline itself is managed with uv (see pyproject.toml).
+streamlit>=1.50
+pandas>=2.2
+pyarrow>=15
+plotly>=5.22
