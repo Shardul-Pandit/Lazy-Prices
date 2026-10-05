@@ -1,0 +1,30 @@
+# Streamlit Community Cloud puts an app to sleep after a period with no visitors.
+# This opens the dashboard in a real browser a few times a day so a recruiter
+# never lands on the "this app has gone to sleep" page.
+name: Keep dashboard awake
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours, at minute 17 (off-peak for GitHub's scheduler)
+  workflow_dispatch:          # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  visit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Visit the app and wake it if needed
+        run: python scripts/keep_awake.py
+        env:
+          APP_URL: https://lazy-prices.streamlit.app
